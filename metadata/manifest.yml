@@ -8,7 +8,7 @@ License: ASL 2.0
 Vendor: P.R. Liu
 Cartridge-Version: 0.0.1
 Cartridge-Vendor: prliu
-Source-Url: https://github.com/prliu/openshift-tesseract-cartridge
+Source-Url: https://github.com/prliu/openshift-tesseract-cartridge.git
 Categories:
   - embedded
 Provides:
