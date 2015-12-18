@@ -11,7 +11,7 @@ fi
 
 tar zxvf libtool-2.4.6.tar.gz
 cd libtool-2.4.6
-configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
+./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
 make
 make install
 
