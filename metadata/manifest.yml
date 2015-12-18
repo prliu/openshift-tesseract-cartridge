@@ -1,0 +1,20 @@
+Name: Openshift-TesseractOCR-Cartridge
+Cartridge-Short-Name: TESSERACT
+Display-Name: Openshift Tesseract OCR Cartridge
+Description: "A expriment cartridge of Tesseract for Openshift."
+Version: 3.02.02
+Versions: ['3.02.02']
+License: ASL 2.0
+Vendor: P.R. Liu
+Cartridge-Version: 0.0.1
+Cartridge-Vendor: prliu
+Source-Url: https://github.com/prliu/openshift-tesseract-cartridge
+Categories:
+  - embedded
+Provides:
+  - tesseract-ocr-3.02.02
+  - "tesseract"
+Cart-Data:
+  - Key: OPENSHIFT_TESSERACT_EXAMPLE
+    Type: environment
+    Description: "An example environment variable using ERB processing"
