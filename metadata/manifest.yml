@@ -1,4 +1,4 @@
-Name: Openshift-TesseractOCR-Cartridge
+Name: Tesseract3
 Cartridge-Short-Name: TESSERACT
 Display-Name: Openshift Tesseract OCR Cartridge
 Description: "A expriment cartridge of Tesseract for Openshift."
