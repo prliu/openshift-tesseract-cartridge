@@ -2,4 +2,8 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-echo "Setup..."
+client_result "Setting up..."
+
+if [ ! -e $OPENSHIFT_HOMEDIR/app-root/data/libtool-2.4.6.tar.gz ]; then
+    wget -c "http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz" -O libtool-2.4.6.tar.gz
+fi
