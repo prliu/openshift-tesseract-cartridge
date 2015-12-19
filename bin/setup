@@ -6,14 +6,14 @@ client_result "Setting up..."
 
 cd $OPENSHIFT_DATA_DIR
 if [ ! -e libtool-2.4.6.tar.gz ]; then
-    wget -c "http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz" -O libtool-2.4.6.tar.gz
+    exec wget -c "http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz" -O libtool-2.4.6.tar.gz
 fi
 
-tar zxvf libtool-2.4.6.tar.gz
+exec tar zxvf libtool-2.4.6.tar.gz
 cd libtool-2.4.6
-./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
-make
-make install
+exec ./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
+exec make
+exec make install
 
 cd $OPENSHIFT_DATA_DIR
 
