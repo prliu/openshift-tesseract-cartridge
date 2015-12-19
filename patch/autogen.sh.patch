@@ -1,0 +1,11 @@
+--- tesseract-ocr/autogen.sh.tmp	2012-07-22 17:37:29.000000000 -0400
++++ tesseract-ocr/autogen.sh	2015-12-19 03:47:05.685957880 -0500
+@@ -47,7 +47,7 @@
+ mkdir -p config
+ 
+ echo "Running aclocal"
+-aclocal -I config || bail_out
++aclocal -I $OPENSHIFT_HOMEDIR/tesseract3/usr/share/aclocal -I config || bail_out
+ 
+ # --- Step 2:
+ 

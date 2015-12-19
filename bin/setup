@@ -1,19 +1,78 @@
 #!/bin/bash -e
 
-source $OPENSHIFT_CARTRIDGE_SDK_BASH
+#source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-echo "Setting up..."
+downloadFiles() {
+    cd $OPENSHIFT_DATA_DIR
+    if [ ! -e libtool-2.4.6.tar.gz ]; then
+	wget -c "http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz" -O libtool-2.4.6.tar.gz;
+    fi
 
-cd $OPENSHIFT_DATA_DIR
-if [ ! -e libtool-2.4.6.tar.gz ]; then
-    wget -c "http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz" -O libtool-2.4.6.tar.gz
-fi
+    if [ ! -e leptonica-1.69.tar.gz ]; then
+	wget -c "http://www.leptonica.org/source/leptonica-1.69.tar.gz" -O leptonica-1.69.tar.gz;
+    fi
 
-tar zxvf libtool-2.4.6.tar.gz
-cd libtool-2.4.6
-./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
-make
-make install
+    if [ ! -e tesseract-ocr-3.02.02.tar.gz ]; then
+	wget -c "https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz" -O tesseract-ocr-3.02.02.tar.gz
+    fi
+}
 
-cd $OPENSHIFT_DATA_DIR
+extractFiles() {
+    cd $OPENSHIFT_DATA_DIR
+    if [ ! -e libtool-2.4.6 ]; then
+	tar zxvf libtool-2.4.6.tar.gz
+    fi
 
+    if [ ! -e leptonica-1.69 ]; then
+	tar zxvf leptonica-1.69.tar.gz
+    fi
+
+    if [ ! -e tesseract-ocr ]; then
+	tar zxvf tesseract-ocr-3.02.02.tar.gz
+    fi
+}
+
+buildLibTool() {
+	cd $OPENSHIFT_DATA_DIR/libtool-2.4.6/
+	./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
+	make
+	make install
+	cd $OPENSHIFT_DATA_DIR
+}
+
+buildLeptonica() {
+	cd $OPENSHIFT_DATA_DIR/leptonica-1.69/
+	./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
+	make
+	make install
+	cd $OPENSHIFT_DATA_DIR
+}
+
+buildTesseract() {
+
+	cd $OPENSHIFT_DATA_DIR
+	cp $OPENSHIFT_HOMEDIR/tesseract3/patch/autogen.sh.patch .
+	patch -p0 < autogen.sh.patch
+
+	cd $OPENSHIFT_DATA_DIR/tesseract-ocr/
+	./autogen.sh
+	./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
+	make
+	make install
+	cd $OPENSHIFT_DATA_DIR
+}
+
+uninstall() {
+	cd $TESSERACT_SRC_DIR
+	make uninstall
+
+	cd $OPENSHIFT_DATA_DIR
+}
+
+clean() {
+	rm -rf $LIBTOOL_SRC_DIR
+	rm -rf $LEPTONICA_SRC_DIR
+	rm -rf $TESSERACT_SRC_DIR
+}
+
+$1
