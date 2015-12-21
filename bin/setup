@@ -49,12 +49,14 @@ buildLeptonica() {
 buildTesseract() {
 
 	cd $OPENSHIFT_DATA_DIR
-	cp $OPENSHIFT_HOMEDIR/tesseract3/patch/autogen.sh.patch .
-	patch -p0 < autogen.sh.patch
+	if [ ! -e autogen.sh.patch ]; then
+        	cp $OPENSHIFT_HOMEDIR/tesseract3/patch/autogen.sh.patch .
+		patch -p0 < autogen.sh.patch
+	fi
 
 	cd $OPENSHIFT_DATA_DIR/tesseract-ocr/
 	./autogen.sh
-	./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
+	./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr LIBLEPT_HEADERSDIR="$OPENSHIFT_HOMEDIR/tesseract3/usr/include/leptonica" LDFLAGS="-L$OPENSHIFT_HOMEDIR/tesseract3/usr/lib"
 	make
 	make install
 	cd $OPENSHIFT_DATA_DIR
