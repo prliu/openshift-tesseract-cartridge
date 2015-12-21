@@ -86,4 +86,6 @@ downloadFiles
 extractFiles
 buildLibTool
 buildLeptonica
+
+echo $OPENSHIFT_TESSERACT_PATH_ELEMENT
 buildTesseract
