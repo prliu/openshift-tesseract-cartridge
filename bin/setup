@@ -62,18 +62,14 @@ buildTesseract() {
 	cd $OPENSHIFT_DATA_DIR
 }
 
-uninstall() {
-	cd $TESSERACT_SRC_DIR
-	make uninstall
-
+removeTemp() {
 	cd $OPENSHIFT_DATA_DIR
+	rm -rf libtool*
+	rm -rf leptonica*
+	rm -rf tesseract*
+	rm -f autogen.sh.patch
 }
 
-clean() {
-	rm -rf $LIBTOOL_SRC_DIR
-	rm -rf $LEPTONICA_SRC_DIR
-	rm -rf $TESSERACT_SRC_DIR
-}
 
 case "$1" in
     -v|--version)
@@ -81,6 +77,15 @@ case "$1" in
 	;;
     -m)
 	$2
+	exit 0
 esac
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+downloadFiles
+extractFiles
+buildLibTool
+buildLeptonica
+buildTesseract
+removeTemp
+
