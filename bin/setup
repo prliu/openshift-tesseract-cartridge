@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-source $OPENSHIFT_CARTRIDGE_SDK_BASH
-
 downloadFiles() {
     cd $OPENSHIFT_DATA_DIR
     if [ ! -e libtool-2.4.6.tar.gz ]; then
@@ -75,10 +73,12 @@ clean() {
 	rm -rf $TESSERACT_SRC_DIR
 }
 
-if [ -z $1 ]; then
-    downloadFiles
-    extractFiles
-else
-    $1
-fi
+case "$1" in
+    -v|--version)
+	version="$2"
+	;;
+    -m)
+	$2
+esac
 
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
