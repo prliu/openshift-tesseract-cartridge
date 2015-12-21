@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-#source $OPENSHIFT_CARTRIDGE_SDK_BASH
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 downloadFiles() {
     cd $OPENSHIFT_DATA_DIR
@@ -75,4 +75,10 @@ clean() {
 	rm -rf $TESSERACT_SRC_DIR
 }
 
-$1
+if [ -z $1 ]; then
+    downloadFiles
+    extractFiles
+else
+    $1
+fi
+
