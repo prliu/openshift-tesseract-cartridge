@@ -30,47 +30,6 @@ extractFiles() {
     fi
 }
 
-buildLibTool() {
-	cd $OPENSHIFT_DATA_DIR/libtool-2.4.6/
-	./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
-	make
-	make install
-	cd $OPENSHIFT_DATA_DIR
-}
-
-buildLeptonica() {
-	cd $OPENSHIFT_DATA_DIR/leptonica-1.69/
-	./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr
-	make
-	make install
-	cd $OPENSHIFT_DATA_DIR
-}
-
-buildTesseract() {
-
-	cd $OPENSHIFT_DATA_DIR
-	if [ ! -e autogen.sh.patch ]; then
-        	cp $OPENSHIFT_HOMEDIR/tesseract3/patch/autogen.sh.patch .
-		patch -p0 < autogen.sh.patch
-	fi
-
-	cd $OPENSHIFT_DATA_DIR/tesseract-ocr/
-	./autogen.sh
-	./configure --prefix=$OPENSHIFT_HOMEDIR/tesseract3/usr LIBLEPT_HEADERSDIR="$OPENSHIFT_HOMEDIR/tesseract3/usr/include/leptonica" LDFLAGS="-L$OPENSHIFT_HOMEDIR/tesseract3/usr/lib"
-	make
-	make install
-	cd $OPENSHIFT_DATA_DIR
-}
-
-removeTemp() {
-	cd $OPENSHIFT_DATA_DIR
-	rm -rf libtool*
-	rm -rf leptonica*
-	rm -rf tesseract*
-	rm -f autogen.sh.patch
-}
-
-
 case "$1" in
     -v|--version)
 	version="$2"
@@ -84,8 +43,3 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 downloadFiles
 extractFiles
-buildLibTool
-buildLeptonica
-
-echo $OPENSHIFT_TESSERACT_PATH_ELEMENT
-buildTesseract
