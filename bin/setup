@@ -86,3 +86,4 @@ downloadFiles
 extractFiles
 buildLibTool
 buildLeptonica
+buildTesseract
