@@ -2502,7 +2502,7 @@ You must 'cd' to the top directory of your package before you run
 When reporting a bug, please describe a test case to reproduce it and
 include the following information:
 
-       host-triplet:   i686-pc-linux-gnu
+       host-triplet:   x86_64-unknown-linux-gnu
        version:        $progname (GNU libtool) 2.4.6
        automake:       `($AUTOMAKE --version) 2>/dev/null |$SED 1q`
        autoconf:       `($AUTOCONF --version) 2>/dev/null |$SED 1q`
@@ -4290,11 +4290,11 @@ func_require_seen_libtool ()
   pkgmacro_files="libtool.m4 ltargz.m4 ltdl.m4 ltoptions.m4 ltsugar.m4 ltversion.m4 lt~obsolete.m4"
 
   # Locations for important files:
-  prefix="/home/paladin/devel/openshift-tesseract-cartridge/usr"
-  datadir="/home/paladin/devel/openshift-tesseract-cartridge/usr/share"
-  pkgauxdir="/home/paladin/devel/openshift-tesseract-cartridge/usr/share/libtool/build-aux"
-  pkgltdldir="/home/paladin/devel/openshift-tesseract-cartridge/usr/share/libtool"
-  aclocaldir="/home/paladin/devel/openshift-tesseract-cartridge/usr/share/aclocal"
+  prefix="/var/lib/openshift/56722ea62d5271c04800004d/tesseract3/usr"
+  datadir="/var/lib/openshift/56722ea62d5271c04800004d/tesseract3/usr/share"
+  pkgauxdir="/var/lib/openshift/56722ea62d5271c04800004d/tesseract3/usr/share/libtool/build-aux"
+  pkgltdldir="/var/lib/openshift/56722ea62d5271c04800004d/tesseract3/usr/share/libtool"
+  aclocaldir="/var/lib/openshift/56722ea62d5271c04800004d/tesseract3/usr/share/aclocal"
 
   # Allow the user to override the master libtoolize repository:
   if test -n "$_lt_pkgdatadir"; then
