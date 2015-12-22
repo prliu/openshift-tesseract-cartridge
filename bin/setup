@@ -41,5 +41,5 @@ esac
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-downloadFiles
-extractFiles
+#downloadFiles
+#extractFiles

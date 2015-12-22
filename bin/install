@@ -51,7 +51,7 @@ esac
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-buildLibTool
-buildLeptonica
-buildTesseract
+#buildLibTool
+#buildLeptonica
+#buildTesseract
 
