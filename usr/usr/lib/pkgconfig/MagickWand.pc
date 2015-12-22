@@ -1,0 +1,11 @@
+prefix=/var/lib/openshift/56722ea62d5271c04800004d/tesseract3/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/ImageMagick
+
+Name: MagickWand
+Version: 6.7.7
+Description:  MagickWand - C API for ImageMagick
+Requires: ImageMagick
+Libs: -L${libdir} -lMagickWand -lMagickCore
+Cflags: -I${includedir} -fopenmp

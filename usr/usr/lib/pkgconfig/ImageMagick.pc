@@ -1,0 +1,10 @@
+prefix=/var/lib/openshift/56722ea62d5271c04800004d/tesseract3/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/ImageMagick
+
+Name: ImageMagick
+Description: ImageMagick - Convert, Edit, and Compose Images
+Version: 6.7.7
+Libs: -L${libdir} -lMagickCore
+Cflags: -I${includedir} -fopenmp
